@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-05-12 22:12:33
- * @LastEditTime: 2021-05-12 22:16:27
- * @LastEditors: your name
+ * @LastEditTime: 2021-05-12 22:35:34
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \my-reack-hook\jira\src\App.tsx
  */
@@ -17,11 +17,7 @@ function App() {
         <img src={logo} className='App-logo' alt='logo' />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-          Learn React
-        </a>
-      </header>
+        </p><a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>Learn React</a></header>
     </div>
   );
 }
