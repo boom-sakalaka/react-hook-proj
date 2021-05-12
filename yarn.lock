@@ -863,14 +863,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/plugin-transform-react-jsx-development@^7.12.1":
-  "integrity" "sha1-9RDA+nzXI0FTU5+aNiztQaXKFEc="
-  "resolved" "https://registry.npm.taobao.org/@babel/plugin-transform-react-jsx-development/download/@babel/plugin-transform-react-jsx-development-7.12.17.tgz"
-  "version" "7.12.17"
-  dependencies:
-    "@babel/plugin-transform-react-jsx" "^7.12.17"
-
-"@babel/plugin-transform-react-jsx-development@^7.12.17":
+"@babel/plugin-transform-react-jsx-development@^7.12.1", "@babel/plugin-transform-react-jsx-development@^7.12.17":
   "integrity" "sha1-9RDA+nzXI0FTU5+aNiztQaXKFEc="
   "resolved" "https://registry.npm.taobao.org/@babel/plugin-transform-react-jsx-development/download/@babel/plugin-transform-react-jsx-development-7.12.17.tgz"
   "version" "7.12.17"
@@ -2823,21 +2816,7 @@
   dependencies:
     "babylon" "^6.18.0"
 
-"babel-jest@^26.6.0":
-  "integrity" "sha1-2H0lywA3V3oMifguV1XF0pPAEFY="
-  "resolved" "https://registry.nlark.com/babel-jest/download/babel-jest-26.6.3.tgz?cache=0&sync_timestamp=1620110763850&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fbabel-jest%2Fdownload%2Fbabel-jest-26.6.3.tgz"
-  "version" "26.6.3"
-  dependencies:
-    "@jest/transform" "^26.6.2"
-    "@jest/types" "^26.6.2"
-    "@types/babel__core" "^7.1.7"
-    "babel-plugin-istanbul" "^6.0.0"
-    "babel-preset-jest" "^26.6.2"
-    "chalk" "^4.0.0"
-    "graceful-fs" "^4.2.4"
-    "slash" "^3.0.0"
-
-"babel-jest@^26.6.3":
+"babel-jest@^26.6.0", "babel-jest@^26.6.3":
   "integrity" "sha1-2H0lywA3V3oMifguV1XF0pPAEFY="
   "resolved" "https://registry.nlark.com/babel-jest/download/babel-jest-26.6.3.tgz?cache=0&sync_timestamp=1620110763850&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fbabel-jest%2Fdownload%2Fbabel-jest-26.6.3.tgz"
   "version" "26.6.3"
@@ -6997,19 +6976,7 @@
     "jest-regex-util" "^26.0.0"
     "jest-snapshot" "^26.6.2"
 
-"jest-resolve@*":
-  "version" "26.6.0"
-  dependencies:
-    "@jest/types" "^26.6.0"
-    "chalk" "^4.0.0"
-    "graceful-fs" "^4.2.4"
-    "jest-pnp-resolver" "^1.2.2"
-    "jest-util" "^26.6.0"
-    "read-pkg-up" "^7.0.1"
-    "resolve" "^1.17.0"
-    "slash" "^3.0.0"
-
-"jest-resolve@^26.6.2":
+"jest-resolve@*", "jest-resolve@^26.6.2":
   "integrity" "sha1-o6sVFyF/RptQTxtWYDxbtUH7tQc="
   "resolved" "https://registry.nlark.com/jest-resolve/download/jest-resolve-26.6.2.tgz"
   "version" "26.6.2"
@@ -10571,11 +10538,6 @@
   "version" "1.0.0"
 
 "semver@^5.4.1", "semver@^5.5.0", "semver@^5.5.1":
-  "integrity" "sha1-qVT5Ma66UI0we78Gnv8MAclhFvc="
-  "resolved" "https://registry.npm.taobao.org/semver/download/semver-5.7.1.tgz?cache=0&sync_timestamp=1616463863424&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsemver%2Fdownload%2Fsemver-5.7.1.tgz"
-  "version" "5.7.1"
-
-"semver@^5.5.0":
   "integrity" "sha1-qVT5Ma66UI0we78Gnv8MAclhFvc="
   "resolved" "https://registry.npm.taobao.org/semver/download/semver-5.7.1.tgz?cache=0&sync_timestamp=1616463863424&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsemver%2Fdownload%2Fsemver-5.7.1.tgz"
   "version" "5.7.1"
