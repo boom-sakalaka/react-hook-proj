@@ -43,6 +43,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.3",
+    "@commitlint/config-conventional": "^12.1.3",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
@@ -54,7 +56,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{jsx,ts,tsx}": [
       "prettier --write"
     ]
   }
