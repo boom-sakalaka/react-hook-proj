@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-12 22:12:33
- * @LastEditTime: 2021-05-12 23:28:27
+ * @LastEditTime: 2021-05-12 23:37:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \my-reack-hook\jira\src\App.tsx
@@ -10,8 +10,6 @@ import React from "react";
 import logo from "logo.svg";
 import "./App.css";
 
-const a = 1;
-const b = 2;
 function App() {
   return (
     <div className="App">
