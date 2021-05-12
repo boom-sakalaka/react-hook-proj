@@ -1,21 +1,24 @@
+/*
+ * @Author: your name
+ * @Date: 2021-05-12 22:12:33
+ * @LastEditTime: 2021-05-12 22:16:27
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \my-reack-hook\jira\src\App.tsx
+ */
 import React from 'react';
-import logo from './logo.svg';
+import logo from 'logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className='App'>
+      <header className='App-header'>
+        <img src={logo} className='App-logo' alt='logo' />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
           Learn React
         </a>
       </header>
