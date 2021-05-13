@@ -1,11 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 22:40:03
- * @LastEditTime: 2021-05-13 22:56:46
+ * @LastEditTime: 2021-05-13 23:27:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\utils\index.js
  */
+import { useEffect, useState } from "react";
 
 export const isFalsy = (value) => (value === 0 ? false : !value);
 export const isVoid = (value) =>
@@ -20,4 +21,23 @@ export const cleanObject = (objcet) => {
     }
   });
   return result;
+};
+
+// eslint-disable-next-line
+export const useMount = (callback) => {
+  useEffect(() => {
+    callback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+};
+
+export const useDebounce = (value, delay) => {
+  const [debounceValue, setDebounceValue] = useState(value);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [value, delay]);
+  return debounceValue;
 };
