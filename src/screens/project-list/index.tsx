@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-05-13 21:08:49
+ * @LastEditTime: 2021-05-15 10:50:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \jira\src\screens\project-list\index.tsx
+ */
 import React, { useEffect, useState } from "react";
 import { List } from "./list";
 import { SearchPanel } from "./search-panel";
@@ -12,7 +20,7 @@ export const ProjectListScrens = () => {
   const [list, setList] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const deDounceParms = useDebounce(param, 2000);
+  const deDounceParms = useDebounce(param, 200);
 
   useEffect(() => {
     fetch(

@@ -1,6 +1,29 @@
+/*
+ * @Author: your name
+ * @Date: 2021-05-13 21:10:49
+ * @LastEditTime: 2021-05-15 10:39:28
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \jira\src\screens\project-list\search-panel.tsx
+ */
 import React from "react";
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  organization: string;
+}
+interface SearchPanelProps {
+  users: User[];
+  param: {
+    name: string;
+    personId: string;
+  };
+  setParam: (param: SearchPanelProps["param"]) => void;
+}
 
-export const SearchPanel = ({ param, setParam, users }) => {
+export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
   return (
     <form action="">
       <div>
