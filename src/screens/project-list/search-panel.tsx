@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:49
- * @LastEditTime: 2021-05-15 10:39:28
+ * @LastEditTime: 2021-05-15 15:31:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\search-panel.tsx
@@ -13,6 +13,7 @@ export interface User {
   email: string;
   title: string;
   organization: string;
+  token: string;
 }
 interface SearchPanelProps {
   users: User[];

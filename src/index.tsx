@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-05-12 22:12:33
- * @LastEditTime: 2021-05-15 15:14:06
- * @LastEditors: your name
+ * @LastEditTime: 2021-05-15 16:18:00
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\index.tsx
  */
@@ -12,11 +12,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
+import { AuthProvider } from "context/auth.context";
 
 loadDevTools(() =>
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </React.StrictMode>,
     document.getElementById("root")
   )

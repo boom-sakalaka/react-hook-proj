@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-05-15 10:57:12
+ * @LastEditTime: 2021-05-15 16:49:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\index.tsx
@@ -12,8 +12,6 @@ import { SearchPanel } from "./search-panel";
 import qs from "qs";
 import { cleanObject, useMount, useDebounce } from "utils";
 const apiUrl = process.env.REACT_APP_API_URL;
-
-console.log(apiUrl);
 
 export const ProjectListScrens = () => {
   const [param, setParam] = useState({ name: "", personId: "" });
