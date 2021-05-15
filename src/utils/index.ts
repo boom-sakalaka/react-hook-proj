@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 22:40:03
- * @LastEditTime: 2021-05-15 11:22:48
+ * @LastEditTime: 2021-05-15 11:34:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\utils\index.js
@@ -57,4 +57,19 @@ export const useDebounce = <V>(value: V, delay?: number): V => {
     return () => clearTimeout(timeout);
   }, [value, delay]);
   return debounceValue;
+};
+
+export const useArray = <T>(initialArray: T[]) => {
+  const [value, setValue] = useState(initialArray);
+  return {
+    value,
+    setValue,
+    add: (item: T) => setValue([...value, item]),
+    clear: () => setValue([]),
+    removeIndex: (index: number) => {
+      const copy = [...value];
+      copy.splice(index, 1);
+      setValue(copy);
+    },
+  };
 };
