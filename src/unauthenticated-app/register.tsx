@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-15 14:01:24
- * @LastEditTime: 2021-05-15 16:49:23
+ * @LastEditTime: 2021-05-16 20:01:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\login\index.tsx
@@ -13,8 +13,8 @@ export interface paramProps {
   password: string;
 }
 
-export const LoginScreen = () => {
-  const { login, user, logout } = useAuth();
+export const RegisterScreen = () => {
+  const { register, user } = useAuth();
   console.log(user);
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -22,13 +22,11 @@ export const LoginScreen = () => {
       .value;
     const password = (event.currentTarget.elements[1] as HTMLInputElement)
       .value;
-    // register({ username, password });
-    login({ username, password });
+    register({ username, password });
   };
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {user ? <div>登录成功,用户名：{user?.name}</div> : ""}
         <div>
           <label htmlFor="username">用户名</label>
           <input type="text" id="username" />
@@ -37,9 +35,8 @@ export const LoginScreen = () => {
           <label htmlFor="password">密码</label>
           <input type="password" id="password" />
         </div>
-        <button type="submit">登录</button>
+        <button type="submit">注册</button>
       </form>
-      <button onClick={logout}>退出登录</button>
     </div>
   );
 };

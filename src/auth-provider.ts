@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-05-15 15:24:49
- * @LastEditTime: 2021-05-15 16:41:14
+ * @LastEditTime: 2021-05-16 20:04:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\auth-provider.ts
  */
 // 在真实环境中，如果使用firebase这个第三方的服务的话，本文件不需要开发
 import { User } from "screens/project-list/search-panel";
-import { paramProps } from "screens/login/index";
+import { paramProps } from "unauthenticated-app/login";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const localStorageKey = "__auth_provider_token__";
