@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-15 14:01:24
- * @LastEditTime: 2021-05-16 20:13:00
+ * @LastEditTime: 2021-05-16 20:19:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\login\index.tsx
@@ -14,7 +14,7 @@ export interface paramProps {
 }
 
 export const LoginScreen = () => {
-  const { login, user, logout } = useAuth();
+  const { login, user } = useAuth();
   console.log(user);
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
