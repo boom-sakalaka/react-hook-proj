@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 22:40:03
- * @LastEditTime: 2021-05-15 11:34:53
+ * @LastEditTime: 2021-05-16 21:34:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\utils\index.js
@@ -10,22 +10,24 @@
 import { useEffect, useState } from "react";
 
 export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
-export const isVoid = (value: string | null | undefined) =>
+export const isVoid = (value: unknown) =>
   value === undefined || value === null || value === "";
 
 // 在一个函数里 改变传入的参数对象本身是不好的
-// @ts-ignore
-export const cleanObject = (objcet) => {
-  const result = { ...objcet };
-  Object.keys(objcet).forEach((key) => {
-    const value = objcet[key];
+export const cleanObject = (object?: { [key: string]: unknown }) => {
+  // Object.assign({}, object)
+  if (!object) {
+    return {};
+  }
+  const result = { ...object };
+  Object.keys(result).forEach((key) => {
+    const value = result[key];
     if (isVoid(value)) {
       delete result[key];
     }
   });
   return result;
 };
-
 type fnc = () => void;
 // eslint-disable-next-line
 export const useMount = (callback: fnc) => {
