@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-12 22:12:33
- * @LastEditTime: 2021-05-15 16:18:00
+ * @LastEditTime: 2021-05-17 21:24:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\index.tsx
@@ -12,6 +12,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { loadDevTools } from "jira-dev-tool";
+import "antd/dist/antd.less";
+
 import { AuthProvider } from "context/auth.context";
 
 loadDevTools(() =>
