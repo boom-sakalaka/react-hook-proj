@@ -1,14 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-05-15 14:01:24
- * @LastEditTime: 2021-05-17 21:33:29
+ * @LastEditTime: 2021-05-17 22:32:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\login\index.tsx
  */
 import React from "react";
 import { useAuth } from "context/auth.context";
-import { Button, Form, Input } from "antd";
+import { Form, Input } from "antd";
+import { LongButton } from "unauthenticated-app/index";
 
 export interface paramProps {
   username: string;
@@ -37,9 +38,9 @@ export const LoginScreen = () => {
           <Input placeholder="密码" type="password" id="password" />
         </Form.Item>
         <Form.Item>
-          <Button htmlType="submit" type="primary">
+          <LongButton htmlType="submit" type="primary">
             登录
-          </Button>
+          </LongButton>
         </Form.Item>
       </Form>
     </div>
