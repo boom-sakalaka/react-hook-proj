@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:49
- * @LastEditTime: 2021-05-17 21:55:17
+ * @LastEditTime: 2021-05-19 22:15:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\search-panel.tsx
  */
 import React from "react";
-import { Input, Select } from "antd";
+import { Form, Input, Select } from "antd";
 const { Option } = Select;
 export interface User {
   id: string;
@@ -28,13 +28,16 @@ interface SearchPanelProps {
 
 export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
   return (
-    <form action="">
-      <div>
+    <Form style={{ marginBottom: "2rem" }} layout={"inline"}>
+      <Form.Item>
         <Input
+          placeholder="项目名"
           type="text"
           value={param.name}
           onChange={(evt) => setParam({ ...param, name: evt.target.value })}
         />
+      </Form.Item>
+      <Form.Item>
         <Select
           value={param.personId}
           onChange={(value) => {
@@ -48,7 +51,7 @@ export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
             </Option>
           ))}
         </Select>
-      </div>
-    </form>
+      </Form.Item>
+    </Form>
   );
 };
