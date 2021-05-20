@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:49
- * @LastEditTime: 2021-05-19 22:15:17
+ * @LastEditTime: 2021-05-19 22:48:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\search-panel.tsx
@@ -44,7 +44,9 @@ export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
             setParam({ ...param, personId: value });
           }}
         >
-          <Option value={""}>负责人</Option>
+          <Option value={""} key={0}>
+            负责人
+          </Option>
           {users.map((user) => (
             <Option key={user.id} value={user.id}>
               {user.name}
