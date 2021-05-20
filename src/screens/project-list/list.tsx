@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-05-20 21:27:33
+ * @LastEditTime: 2021-05-20 22:21:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\list.tsx
@@ -11,7 +11,7 @@ import { User } from "screens/project-list/search-panel";
 import { Table, TableProps } from "antd";
 import dayjs from "dayjs";
 
-interface Project {
+export interface Project {
   id: string;
   name: string;
   personId: string;
