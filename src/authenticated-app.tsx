@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-05-19 22:34:08
+ * @LastEditTime: 2021-05-21 23:18:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\authenticated-app.js
@@ -10,7 +10,7 @@ import { useAuth } from "context/auth.context";
 import React from "react";
 import { ProjectListScrens } from "screens/project-list/index";
 import styled from "@emotion/styled";
-import { Row } from "compoments/lib.tsx";
+import { Row } from "compoments/lib";
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import { Button, Dropdown, Menu } from "antd";
 
