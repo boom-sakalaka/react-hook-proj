@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-15 14:01:24
- * @LastEditTime: 2021-05-17 22:32:01
+ * @LastEditTime: 2021-05-21 22:08:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\login\index.tsx
@@ -10,17 +10,30 @@ import React from "react";
 import { useAuth } from "context/auth.context";
 import { Form, Input } from "antd";
 import { LongButton } from "unauthenticated-app/index";
+import { useAsync } from "utils/use-async";
 
 export interface paramProps {
   username: string;
   password: string;
 }
 
-export const LoginScreen = () => {
-  const { login, user } = useAuth();
-  console.log(user);
-  const handleSubmit = (values: { username: string; password: string }) => {
-    login(values);
+export const LoginScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
+  const { login } = useAuth();
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
+
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await run(login(values));
+    } catch (e) {
+      onError(e);
+    }
   };
   return (
     <div>
@@ -38,7 +51,7 @@ export const LoginScreen = () => {
           <Input placeholder="密码" type="password" id="password" />
         </Form.Item>
         <Form.Item>
-          <LongButton htmlType="submit" type="primary">
+          <LongButton loading={isLoading} htmlType="submit" type="primary">
             登录
           </LongButton>
         </Form.Item>

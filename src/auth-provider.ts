@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-15 15:24:49
- * @LastEditTime: 2021-05-16 20:04:40
+ * @LastEditTime: 2021-05-21 21:22:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\auth-provider.ts
@@ -31,7 +31,7 @@ export const login = (data: paramProps) => {
     if (res.ok) {
       return handleUserResponse(await res.json());
     } else {
-      return Promise.reject(data);
+      return Promise.reject(await res.json());
     }
   });
 };
@@ -47,7 +47,7 @@ export const register = (data: paramProps) => {
     if (res.ok) {
       return handleUserResponse(await res.json());
     } else {
-      return Promise.reject(data);
+      return Promise.reject(await res.json());
     }
   });
 };
