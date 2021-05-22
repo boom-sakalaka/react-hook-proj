@@ -1,9 +1,9 @@
 /*
  * @Author: your name
  * @Date: 2021-05-21 22:51:23
- * @LastEditTime: 2021-05-21 23:19:20
+ * @LastEditTime: 2021-05-22 23:07:57
  * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
+ * @Description: 捕捉边界错误
  * @FilePath: \jira\src\compoments\error.boundary.tsx
  */
 import React from "react";
