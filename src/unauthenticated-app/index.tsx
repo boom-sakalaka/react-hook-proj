@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:59:16
- * @LastEditTime: 2021-05-23 22:53:07
+ * @LastEditTime: 2021-05-23 23:15:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\unauthenticated-app\index.tsx
@@ -14,17 +14,18 @@ import styled from "@emotion/styled";
 import logo from "assets/logo.svg";
 import left from "assets/left.svg";
 import right from "assets/right.svg";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
+// import { useDocumentTitle } from 'utils';
 
 export const UnauthenticatedApp = () => {
   const [isRegister, setRegisTer] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-
+  // useDocumentTitle('请登录或注册以继续');
   return (
     <Container>
-      <Helmet>
+      {/* <Helmet>
         <title>请登录或注册以继续</title>
-      </Helmet>
+      </Helmet> */}
       <Header />
       <Background />
       <ShadowCark>

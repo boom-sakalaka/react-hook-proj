@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 22:40:03
- * @LastEditTime: 2021-05-19 22:37:02
+ * @LastEditTime: 2021-05-23 23:19:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\utils\index.js
@@ -74,4 +74,22 @@ export const useArray = <T>(initialArray: T[]) => {
       setValue(copy);
     },
   };
+};
+
+export const useDocumentTitle = (
+  title: string,
+  keepOnUnMount: boolean = true
+) => {
+  const oldTitle = document.title;
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
+  useEffect(() => {
+    return () => {
+      if (!keepOnUnMount) {
+        document.title = oldTitle;
+      }
+    };
+  }, []);
 };
