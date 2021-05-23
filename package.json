@@ -20,6 +20,7 @@
     "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-query": "^3.5.10",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.6",
+    "@types/react-helmet": "^6.1.1",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
     "json-server": "^0.16.3",

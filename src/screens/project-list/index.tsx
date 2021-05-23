@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-05-20 22:38:09
+ * @LastEditTime: 2021-05-23 22:53:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\index.tsx
@@ -14,6 +14,7 @@ import styled from "@emotion/styled";
 import { Typography } from "antd";
 import { useProject } from "utils/project";
 import { useUsers } from "utils/user";
+import { Helmet } from "react-helmet";
 
 export const ProjectListScrens = () => {
   const [param, setParam] = useState({ name: "", personId: "" });
@@ -23,6 +24,9 @@ export const ProjectListScrens = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>项目列表</title>
+      </Helmet>
       <h1>项目列表</h1>
       <SearchPanel param={param} setParam={setParam} users={users || []} />
       {error ? (
