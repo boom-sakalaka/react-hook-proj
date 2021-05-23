@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-05-23 23:15:39
+ * @LastEditTime: 2021-05-23 23:28:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\index.tsx
@@ -16,6 +16,7 @@ import { useProject } from "utils/project";
 import { useUsers } from "utils/user";
 // import { Helmet } from "react-helmet";
 import { useDocumentTitle } from "utils";
+import { Test } from "./test";
 
 export const ProjectListScrens = () => {
   const [param, setParam] = useState({ name: "", personId: "" });
@@ -25,6 +26,7 @@ export const ProjectListScrens = () => {
   useDocumentTitle("项目列表", false);
   return (
     <Container>
+      <Test />
       {/* <Helmet>
         <title>项目列表</title>
       </Helmet> */}

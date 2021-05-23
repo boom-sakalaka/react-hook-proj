@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 22:40:03
- * @LastEditTime: 2021-05-23 23:19:28
+ * @LastEditTime: 2021-05-23 23:32:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\utils\index.js
@@ -91,5 +91,6 @@ export const useDocumentTitle = (
         document.title = oldTitle;
       }
     };
+    // eslint-disable-next-line
   }, []);
 };
