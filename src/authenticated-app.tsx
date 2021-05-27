@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-05-27 21:41:38
+ * @LastEditTime: 2021-05-27 22:02:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\authenticated-app.js
@@ -13,13 +13,25 @@ import styled from "@emotion/styled";
 import { Row } from "compoments/lib";
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import { Button, Dropdown, Menu } from "antd";
-
+import { Navigate, Route, Routes } from "react-router";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ProjectScreen } from "screens/project/index";
 export const AuthenticatedApp = () => {
   return (
     <Container>
       <PageHeader />
       <Main>
-        <ProjectListScrens />
+        {/* <ProjectListScrens /> */}
+        <Router>
+          <Routes>
+            <Route path={"/projects"} element={<ProjectListScrens />} />
+            <Route
+              path={"/projects/:projectId/*"}
+              element={<ProjectScreen />}
+            />
+            <Navigate to={"/projects"} />
+          </Routes>
+        </Router>
       </Main>
     </Container>
   );

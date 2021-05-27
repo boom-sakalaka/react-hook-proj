@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-05-20 22:21:00
+ * @LastEditTime: 2021-05-27 22:04:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\list.tsx
@@ -10,6 +10,7 @@ import React from "react";
 import { User } from "screens/project-list/search-panel";
 import { Table, TableProps } from "antd";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 export interface Project {
   id: string;
@@ -31,8 +32,11 @@ export const List = ({ users, ...props }: ListProps) => {
       columns={[
         {
           title: "名称",
-          dataIndex: "name",
+
           sorter: (a, b) => a.name.localeCompare(b.name),
+          render(value, project) {
+            return <Link to={project.id.toString()}>{project.name}</Link>;
+          },
         },
         {
           title: "部门",
