@@ -10511,6 +10511,21 @@ react-refresh@^0.8.3:
   resolved "https://registry.nlark.com/react-refresh/download/react-refresh-0.8.3.tgz"
   integrity sha1-ch1GV2ctQAxePHXQY8SoX7LV1o8=
 
+react-router-dom@^6.0.0-beta.0:
+  version "6.0.0-beta.0"
+  resolved "https://registry.npm.taobao.org/react-router-dom/download/react-router-dom-6.0.0-beta.0.tgz#9dcc8555365f22f7fbd09f26b6b82543f3eb97d6"
+  integrity sha1-ncyFVTZfIvf70J8mtrglQ/Prl9Y=
+  dependencies:
+    prop-types "^15.7.2"
+    react-router "6.0.0-beta.0"
+
+react-router@6.0.0-beta.0, react-router@^6.0.0-beta.0:
+  version "6.0.0-beta.0"
+  resolved "https://registry.npm.taobao.org/react-router/download/react-router-6.0.0-beta.0.tgz#3e11f39b6ded4412c2fed9e4f989dd4c8156724d"
+  integrity sha1-PhHzm23tRBLC/tnk+YndTIFWck0=
+  dependencies:
+    prop-types "^15.7.2"
+
 react-scripts@4.0.3:
   version "4.0.3"
   resolved "https://registry.npm.taobao.org/react-scripts/download/react-scripts-4.0.3.tgz"
