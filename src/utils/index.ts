@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 22:40:03
- * @LastEditTime: 2021-05-24 19:45:31
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-07-06 07:42:02
+ * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\utils\index.js
+ * @FilePath: \jira\src\utils\index.ts
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -68,9 +68,9 @@ export const useArray = <T>(initialArray: T[]) => {
     setValue,
     add: (item: T) => setValue([...value, item]),
     clear: () => setValue([]),
-    removeIndex: (index: number) => {
+    remooveIndex: (index: number) => {
       const copy = [...value];
-      copy.splice(index, 1);
+      copy.slice(index, 1);
       setValue(copy);
     },
   };
