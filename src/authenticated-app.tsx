@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-05-27 22:02:38
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-08-01 19:45:06
+ * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\authenticated-app.js
+ * @FilePath: \jira\src\authenticated-app.tsx
  */
 import { useAuth } from "context/auth.context";
 import React from "react";
