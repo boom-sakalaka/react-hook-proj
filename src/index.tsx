@@ -1,11 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-05-12 22:12:33
- * @LastEditTime: 2021-08-01 20:19:41
+ * @LastEditTime: 2021-08-02 22:33:39
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\index.tsx
  */
+import "./wdyr.ts";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";

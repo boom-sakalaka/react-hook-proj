@@ -2373,6 +2373,13 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@welldone-software/why-did-you-render@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.nlark.com/@welldone-software/why-did-you-render/download/@welldone-software/why-did-you-render-6.2.0.tgz#a053e63f45adb57161c723dee4b005769ea1b64f"
+  integrity sha1-oFPmP0WttXFhxyPe5LAFdp6htk8=
+  dependencies:
+    lodash "^4"
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/@xtuc/ieee754/download/@xtuc/ieee754-1.2.0.tgz"
@@ -7343,6 +7350,16 @@ jest@26.6.0:
     import-local "^3.0.2"
     jest-cli "^26.6.0"
 
+jira-dev-tool@1.6.59:
+  version "1.6.59"
+  resolved "https://registry.nlark.com/jira-dev-tool/download/jira-dev-tool-1.6.59.tgz#67a98dba9fc9c976d004f3bea1b0349437a0da17"
+  integrity sha1-Z6mNup/JyXbQBPO+obA0lDeg2hc=
+  dependencies:
+    antd "^4.9.1"
+    jira-dev-tool "^1.6.13"
+    msw "^0.24.1"
+    react-query "^3.5.10"
+
 jira-dev-tool@^1.6.13:
   version "1.7.61"
   resolved "https://registry.nlark.com/jira-dev-tool/download/jira-dev-tool-1.7.61.tgz#32477c1e0f9f9f46ad5ffd61409ac05a1422c17c"
@@ -7352,16 +7369,6 @@ jira-dev-tool@^1.6.13:
     msw "^0.24.1"
     react-query "^2.26.3"
     react-query-devtools "^2.6.3"
-
-jira-dev-tool@^1.6.59:
-  version "1.6.59"
-  resolved "https://registry.nlark.com/jira-dev-tool/download/jira-dev-tool-1.6.59.tgz#67a98dba9fc9c976d004f3bea1b0349437a0da17"
-  integrity sha1-Z6mNup/JyXbQBPO+obA0lDeg2hc=
-  dependencies:
-    antd "^4.9.1"
-    jira-dev-tool "^1.6.13"
-    msw "^0.24.1"
-    react-query "^3.5.10"
 
 jju@^1.1.0:
   version "1.4.0"
@@ -7842,7 +7849,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@4, "lodash@>=3.5 <5", lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.5, lodash@^4.7.0:
+lodash@4, "lodash@>=3.5 <5", lodash@^4, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.5, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.nlark.com/lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1618847558302&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flodash%2Fdownload%2Flodash-4.17.21.tgz"
   integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=

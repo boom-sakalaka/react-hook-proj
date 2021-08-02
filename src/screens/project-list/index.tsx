@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-05-27 21:43:57
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-08-02 22:32:09
+ * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\index.tsx
  */
@@ -16,10 +16,13 @@ import { useProject } from "utils/project";
 import { useUsers } from "utils/user";
 // import { Helmet } from "react-helmet";
 import { useDocumentTitle } from "utils";
+import { useQueryQueryParam } from "utils/url";
 // import { Test } from "./test";
 
 export const ProjectListScrens = () => {
-  const [param, setParam] = useState({ name: "", personId: "" });
+  const [, setParam] = useState({ name: "", personId: "" });
+
+  const [param] = useQueryQueryParam(["name", "personId"]);
   const deDounceParms = useDebounce(param, 1000);
   const { isLoading, error, data: list } = useProject(deDounceParms);
   const { data: users } = useUsers();
@@ -39,6 +42,8 @@ export const ProjectListScrens = () => {
     </Container>
   );
 };
+
+ProjectListScrens.whyDidYouRender = true;
 
 const Container = styled.div`
   padding-left: 3.2rem;
