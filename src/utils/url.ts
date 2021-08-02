@@ -2,13 +2,14 @@
  * @Author: GZH
  * @Date: 2021-08-02 21:51:18
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-02 23:26:39
+ * @LastEditTime: 2021-08-03 00:04:09
  * @FilePath: \jira\src\utils\url.ts
  * @Description:
  */
 
 import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { URLSearchParamsInit, useSearchParams } from "react-router-dom";
+import { cleanObject } from "utils";
 
 // 返回页面url 指定键的值
 export const useQueryQueryParam = <K extends string>(keys: K[]) => {
@@ -23,6 +24,12 @@ export const useQueryQueryParam = <K extends string>(keys: K[]) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [searchParam]
     ),
-    setSearchParam,
+    (params: Partial<{ [key in K]: unknown }>) => {
+      const o = cleanObject({
+        ...Object.fromEntries(searchParam),
+        ...params,
+      }) as URLSearchParamsInit;
+      return setSearchParam(o);
+    },
   ] as const;
 };

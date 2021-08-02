@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-08-02 22:32:09
+ * @LastEditTime: 2021-08-03 00:09:16
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\index.tsx
  */
-import React, { useState } from "react";
+import React from "react";
 import { List } from "./list";
 import { SearchPanel } from "./search-panel";
 import { useDebounce } from "utils";
@@ -20,9 +20,7 @@ import { useQueryQueryParam } from "utils/url";
 // import { Test } from "./test";
 
 export const ProjectListScrens = () => {
-  const [, setParam] = useState({ name: "", personId: "" });
-
-  const [param] = useQueryQueryParam(["name", "personId"]);
+  const [param, setParam] = useQueryQueryParam(["name", "personId"]);
   const deDounceParms = useDebounce(param, 1000);
   const { isLoading, error, data: list } = useProject(deDounceParms);
   const { data: users } = useUsers();
@@ -43,7 +41,7 @@ export const ProjectListScrens = () => {
   );
 };
 
-ProjectListScrens.whyDidYouRender = true;
+ProjectListScrens.whyDidYouRender = false;
 
 const Container = styled.div`
   padding-left: 3.2rem;
