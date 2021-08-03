@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-20 22:23:16
- * @LastEditTime: 2021-08-02 20:22:02
+ * @LastEditTime: 2021-08-03 23:21:39
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\utils\project.ts
@@ -22,4 +22,41 @@ export const useProject = (param?: Partial<Project>) => {
   }, [param]);
 
   return result;
+};
+
+export const useEditProject = () => {
+  const { run, ...asyncResult } = useAsync();
+  const client = useHttp();
+
+  const mutate = (param: Partial<Project>) => {
+    return run(
+      client(`projects/${param.id}`, {
+        data: param,
+        method: "PATCH",
+      })
+    );
+  };
+
+  return {
+    mutate,
+    ...asyncResult,
+  };
+};
+export const useAddProject = () => {
+  const { run, ...asyncResult } = useAsync();
+  const client = useHttp();
+
+  const mutate = (param: Partial<Project>) => {
+    return run(
+      client(`projects/${param.id}`, {
+        data: param,
+        method: "POST",
+      })
+    );
+  };
+
+  return {
+    mutate,
+    ...asyncResult,
+  };
 };

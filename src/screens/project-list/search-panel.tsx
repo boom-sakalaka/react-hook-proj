@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:49
- * @LastEditTime: 2021-08-03 22:20:19
+ * @LastEditTime: 2021-08-03 23:03:50
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\search-panel.tsx
  */
 import React from "react";
-import { Form, Input, Select } from "antd";
+import { Form, Input } from "antd";
 import { Project } from "./list";
 import { UserSelect } from "compoments/user-select";
 export interface User {

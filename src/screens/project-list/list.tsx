@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-08-03 22:06:48
+ * @LastEditTime: 2021-08-03 23:26:20
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\list.tsx
@@ -11,6 +11,8 @@ import { User } from "screens/project-list/search-panel";
 import { Table, TableProps } from "antd";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import Pin from "compoments/pin";
+import { useEditProject } from "utils/project";
 
 export interface Project {
   id: number;
@@ -26,13 +28,25 @@ interface ListProps extends TableProps<Project> {
 }
 
 export const List = ({ users, ...props }: ListProps) => {
+  const { mutate } = useEditProject();
+  const pinPeject = (id: number) => (pin: boolean) => mutate({ id, pin });
   return (
     <Table
       pagination={false}
       columns={[
         {
+          title: <Pin checked={true} disabled={true} />,
+          render(value, project) {
+            return (
+              <Pin
+                checked={project.pin}
+                onCheackChange={pinPeject(project.id)}
+              />
+            );
+          },
+        },
+        {
           title: "名称",
-
           sorter: (a, b) => a.name.localeCompare(b.name),
           render(value, project) {
             return <Link to={project.id.toString()}>{project.name}</Link>;
