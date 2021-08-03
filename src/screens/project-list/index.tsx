@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-08-03 00:09:16
+ * @LastEditTime: 2021-08-03 22:16:45
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\index.tsx
@@ -16,15 +16,15 @@ import { useProject } from "utils/project";
 import { useUsers } from "utils/user";
 // import { Helmet } from "react-helmet";
 import { useDocumentTitle } from "utils";
-import { useQueryQueryParam } from "utils/url";
+import { useProjectsSearchParams } from "./util";
 // import { Test } from "./test";
 
 export const ProjectListScrens = () => {
-  const [param, setParam] = useQueryQueryParam(["name", "personId"]);
-  const deDounceParms = useDebounce(param, 1000);
-  const { isLoading, error, data: list } = useProject(deDounceParms);
-  const { data: users } = useUsers();
   useDocumentTitle("项目列表", false);
+  const [param, setParam] = useProjectsSearchParams();
+  const { isLoading, error, data: list } = useProject(useDebounce(param, 1000));
+  const { data: users } = useUsers();
+
   return (
     <Container>
       {/* <Test /> */}

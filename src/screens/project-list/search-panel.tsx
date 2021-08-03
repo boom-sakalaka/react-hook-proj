@@ -1,16 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:49
- * @LastEditTime: 2021-08-03 00:10:02
+ * @LastEditTime: 2021-08-03 22:20:19
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\search-panel.tsx
  */
 import React from "react";
 import { Form, Input, Select } from "antd";
-const { Option } = Select;
+import { Project } from "./list";
+import { UserSelect } from "compoments/user-select";
 export interface User {
-  id: string;
+  id: number;
   name: string;
   email: string;
   title: string;
@@ -19,10 +20,7 @@ export interface User {
 }
 interface SearchPanelProps {
   users: User[];
-  param: {
-    name: string;
-    personId: string;
-  };
+  param: Partial<Pick<Project, "name" | "personId">>;
   setParam: (param: SearchPanelProps["param"]) => void;
 }
 
@@ -38,21 +36,13 @@ export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
         />
       </Form.Item>
       <Form.Item>
-        <Select
+        <UserSelect
+          defaultOptionName={"负责人"}
           value={param.personId}
           onChange={(value) => {
             setParam({ ...param, personId: value });
           }}
-        >
-          <Option value={""} key={0}>
-            负责人
-          </Option>
-          {users.map((user) => (
-            <Option key={user.id} value={String(user.id)}>
-              {user.name}
-            </Option>
-          ))}
-        </Select>
+        />
       </Form.Item>
     </Form>
   );

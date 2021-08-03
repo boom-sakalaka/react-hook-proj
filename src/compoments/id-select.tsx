@@ -1,3 +1,11 @@
+/*
+ * @Author: GZH
+ * @Date: 2021-08-03 21:51:41
+ * @LastEditors: GZH
+ * @LastEditTime: 2021-08-03 22:05:54
+ * @FilePath: \jira\src\compoments\id-select.tsx
+ * @Description:
+ */
 import React from "react";
 import { Raw } from "types";
 import { Select } from "antd";

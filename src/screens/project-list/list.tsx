@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-05-27 22:04:13
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-08-03 22:06:48
+ * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project-list\list.tsx
  */
@@ -13,9 +13,9 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
 export interface Project {
-  id: string;
+  id: number;
   name: string;
-  personId: string;
+  personId: number;
   pin: boolean;
   organization: string;
   created: string;
