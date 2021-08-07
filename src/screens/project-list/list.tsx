@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-08-07 14:26:30
+ * @LastEditTime: 2021-08-07 14:40:26
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\screens\project-list\list.tsx
@@ -27,7 +27,7 @@ export interface Project {
 interface ListProps extends TableProps<Project> {
   users: User[];
   refresh?: () => void;
-  setProjectModalOpen: (isOpen: boolean) => void;
+  pojectButton: JSX.Element;
 }
 
 export const List = ({ users, refresh, ...props }: ListProps) => {
@@ -89,14 +89,7 @@ export const List = ({ users, refresh, ...props }: ListProps) => {
               <Dropdown
                 overlay={
                   <Menu>
-                    <Menu.Item key="edit">
-                      <ButtonNoPadding
-                        type="link"
-                        onClick={() => props.setProjectModalOpen(true)}
-                      >
-                        编辑
-                      </ButtonNoPadding>
-                    </Menu.Item>
+                    <Menu.Item key="edit">{props.pojectButton}</Menu.Item>
                   </Menu>
                 }
               >

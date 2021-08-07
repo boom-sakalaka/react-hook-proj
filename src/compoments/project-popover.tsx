@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-08-07 12:12:22
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-07 14:16:30
+ * @LastEditTime: 2021-08-07 14:40:38
  * @FilePath: \react-hook-proj\src\compoments\project-popover.tsx
  * @Description:
  */
@@ -11,11 +11,8 @@ import styled from "@emotion/styled";
 import { Divider, List, Popover, Typography } from "antd";
 import React from "react";
 import { useProject } from "utils/project";
-import { ButtonNoPadding } from "./lib";
 
-export default function ProjectPopover(props: {
-  setProjectModalOpen: (isOpen: boolean) => void;
-}) {
+export default function ProjectPopover(props: { pojectButton: JSX.Element }) {
   const { data: project } = useProject();
   const pinnedProjects = project?.filter((project) => project.pin);
   const content = (
@@ -29,12 +26,7 @@ export default function ProjectPopover(props: {
         ))}
       </List>
       <Divider />
-      <ButtonNoPadding
-        type="link"
-        onClick={() => props.setProjectModalOpen(true)}
-      >
-        创建项目
-      </ButtonNoPadding>
+      {props.pojectButton}
     </ContentContainer>
   );
   return (

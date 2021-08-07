@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-08-07 14:18:10
+ * @LastEditTime: 2021-08-07 14:38:50
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\authenticated-app.tsx
@@ -10,7 +10,7 @@ import { useAuth } from "context/auth.context";
 import React, { useCallback, useState } from "react";
 import { ProjectListScrens } from "screens/project-list/index";
 import styled from "@emotion/styled";
-import { Row } from "compoments/lib";
+import { ButtonNoPadding, Row } from "compoments/lib";
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import { Button, Dropdown, Menu } from "antd";
 import { Navigate, Route, Routes } from "react-router";
@@ -22,7 +22,16 @@ export const AuthenticatedApp = () => {
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   return (
     <Container>
-      <PageHeader setProjectModalOpen={setProjectModalOpen} />
+      <PageHeader
+        pojectButton={
+          <ButtonNoPadding
+            type="link"
+            onClick={() => setProjectModalOpen(true)}
+          >
+            创建项目
+          </ButtonNoPadding>
+        }
+      />
       <Main>
         {/* <ProjectListScrens /> */}
         <Router>
@@ -30,7 +39,16 @@ export const AuthenticatedApp = () => {
             <Route
               path={"/projects"}
               element={
-                <ProjectListScrens setProjectModalOpen={setProjectModalOpen} />
+                <ProjectListScrens
+                  pojectButton={
+                    <ButtonNoPadding
+                      type="link"
+                      onClick={() => setProjectModalOpen(true)}
+                    >
+                      创建项目
+                    </ButtonNoPadding>
+                  }
+                />
               }
             />
             <Route
@@ -51,14 +69,12 @@ export const AuthenticatedApp = () => {
   );
 };
 
-const PageHeader = (props: {
-  setProjectModalOpen: (isOpen: boolean) => void;
-}) => {
+const PageHeader = (props: { pojectButton: JSX.Element }) => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
         <SoftwareLogo width={"18rem"} color={"rgb(38,132,255)"} />
-        <ProjectPopover setProjectModalOpen={props.setProjectModalOpen} />
+        <ProjectPopover pojectButton={props.pojectButton} />
       </HeaderLeft>
       <HeaderRight>
         <User />
