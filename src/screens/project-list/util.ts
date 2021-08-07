@@ -2,13 +2,14 @@
  * @Author: GZH
  * @Date: 2021-08-03 22:11:53
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-07 18:08:08
+ * @LastEditTime: 2021-08-07 23:31:54
  * @FilePath: \react-hook-proj\src\screens\project-list\util.ts
  * @Description:
  */
 
 import { useCallback, useMemo } from "react";
-import { useQueryQueryParam } from "utils/url";
+import { useProject } from "utils/project";
+import { useQueryQueryParam, useSetUrlSearchParam } from "utils/url";
 
 export const useProjectsSearchParams = () => {
   const [param, setParam] = useQueryQueryParam(["name", "personId"]);
@@ -26,19 +27,25 @@ export const useProjectModal = () => {
   const [{ projectCreate }, setProjectCreate] = useQueryQueryParam([
     "projectCreate",
   ]);
+  const [{ editingProjectId }, setEditingProjectId] = useQueryQueryParam([
+    "editingProjectId",
+  ]);
+  const setUrlParams = useSetUrlSearchParam();
+  const { data: editingProject, isLoading } = useProject(
+    Number(editingProjectId)
+  );
 
-  const open = useCallback(
-    () => setProjectCreate({ projectCreate: true }),
-    [setProjectCreate]
-  );
-  const close = useCallback(
-    () => setProjectCreate({ projectCreate: false }),
-    [setProjectCreate]
-  );
+  const open = () => setProjectCreate({ projectCreate: true });
+  const close = () => setUrlParams({ projectCreate: "", editingProjectId: "" });
+  const startEdit = (id: number) =>
+    setEditingProjectId({ editingProjectId: id });
 
   return {
-    projectModalOpen: projectCreate === "true",
+    projectModalOpen: projectCreate === "true" || Boolean(editingProjectId),
     open,
     close,
+    startEdit,
+    editingProject,
+    isLoading,
   };
 };

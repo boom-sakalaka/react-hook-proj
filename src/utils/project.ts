@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-20 22:23:16
- * @LastEditTime: 2021-08-07 22:09:23
+ * @LastEditTime: 2021-08-07 23:20:37
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\utils\project.ts
@@ -10,7 +10,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { Project } from "screens/project-list/list";
 import { useHttp } from "./http";
-import { useAsync } from "./use-async";
 
 export const useProjects = (param?: Partial<Project>) => {
   const client = useHttp();
@@ -39,12 +38,23 @@ export const useAddProject = () => {
   const queryClient = useQueryClient();
   return useMutation(
     (params: Partial<Project>) =>
-      client(`projects/${params.id}`, {
+      client(`projects`, {
         method: "Post",
         data: params,
       }),
     {
       onSuccess: () => queryClient.invalidateQueries("projects"),
+    }
+  );
+};
+
+export const useProject = (id?: number) => {
+  const client = useHttp();
+  return useQuery<Project>(
+    ["project", { id }],
+    () => client(`projects/${id}`),
+    {
+      enabled: Boolean(id),
     }
   );
 };

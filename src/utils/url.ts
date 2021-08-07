@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-08-02 21:51:18
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-03 00:04:09
- * @FilePath: \jira\src\utils\url.ts
+ * @LastEditTime: 2021-08-07 23:31:11
+ * @FilePath: \react-hook-proj\src\utils\url.ts
  * @Description:
  */
 
@@ -32,4 +32,15 @@ export const useQueryQueryParam = <K extends string>(keys: K[]) => {
       return setSearchParam(o);
     },
   ] as const;
+};
+
+export const useSetUrlSearchParam = () => {
+  const [searchParams, setSearchParam] = useSearchParams();
+  return (params: { [key in string]: unknown }) => {
+    const o = cleanObject({
+      ...Object.fromEntries(searchParams),
+      ...params,
+    }) as URLSearchParamsInit;
+    return setSearchParam(o);
+  };
 };
