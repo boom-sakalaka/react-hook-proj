@@ -1,14 +1,15 @@
-import { useCallback, useState } from "react";
-import { useMountedRef } from "utils";
-
 /*
  * @Author: your name
  * @Date: 2021-05-20 21:39:47
- * @LastEditTime: 2021-08-07 11:39:10
+ * @LastEditTime: 2021-08-07 11:55:48
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\utils\use-async.ts
  */
+
+import { useCallback, useState } from "react";
+import { useMountedRef } from "utils";
+
 interface State<D> {
   error: Error | null;
   data: D | null;
