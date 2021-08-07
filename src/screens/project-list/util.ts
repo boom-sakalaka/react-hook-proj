@@ -2,12 +2,12 @@
  * @Author: GZH
  * @Date: 2021-08-03 22:11:53
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-03 22:21:46
- * @FilePath: \jira\src\screens\project-list\util.ts
+ * @LastEditTime: 2021-08-07 18:08:08
+ * @FilePath: \react-hook-proj\src\screens\project-list\util.ts
  * @Description:
  */
 
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useQueryQueryParam } from "utils/url";
 
 export const useProjectsSearchParams = () => {
@@ -20,4 +20,25 @@ export const useProjectsSearchParams = () => {
     ),
     setParam,
   ] as const;
+};
+
+export const useProjectModal = () => {
+  const [{ projectCreate }, setProjectCreate] = useQueryQueryParam([
+    "projectCreate",
+  ]);
+
+  const open = useCallback(
+    () => setProjectCreate({ projectCreate: true }),
+    [setProjectCreate]
+  );
+  const close = useCallback(
+    () => setProjectCreate({ projectCreate: false }),
+    [setProjectCreate]
+  );
+
+  return {
+    projectModalOpen: projectCreate === "true",
+    open,
+    close,
+  };
 };

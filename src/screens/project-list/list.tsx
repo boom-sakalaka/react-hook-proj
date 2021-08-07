@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-08-07 14:40:26
+ * @LastEditTime: 2021-08-07 18:22:04
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\screens\project-list\list.tsx
@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import Pin from "compoments/pin";
 import { useEditProject } from "utils/project";
 import { ButtonNoPadding } from "compoments/lib";
+import { useProjectModal } from "./util";
 
 export interface Project {
   id: number;
@@ -27,11 +28,11 @@ export interface Project {
 interface ListProps extends TableProps<Project> {
   users: User[];
   refresh?: () => void;
-  pojectButton: JSX.Element;
 }
 
 export const List = ({ users, refresh, ...props }: ListProps) => {
   const { mutate } = useEditProject();
+  const { open } = useProjectModal();
   const pinPeject = (id: number) => (pin: boolean) =>
     mutate({ id, pin }).then(refresh);
   return (
@@ -89,7 +90,11 @@ export const List = ({ users, refresh, ...props }: ListProps) => {
               <Dropdown
                 overlay={
                   <Menu>
-                    <Menu.Item key="edit">{props.pojectButton}</Menu.Item>
+                    <Menu.Item key="edit">
+                      <ButtonNoPadding type="link" onClick={open}>
+                        创建项目
+                      </ButtonNoPadding>
+                    </Menu.Item>
                   </Menu>
                 }
               >
