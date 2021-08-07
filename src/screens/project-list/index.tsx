@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-08-03 22:16:45
+ * @LastEditTime: 2021-08-07 10:55:23
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\screens\project-list\index.tsx
+ * @FilePath: \react-hook-proj\src\screens\project-list\index.tsx
  */
 import React from "react";
 import { List } from "./list";
@@ -22,7 +22,12 @@ import { useProjectsSearchParams } from "./util";
 export const ProjectListScrens = () => {
   useDocumentTitle("项目列表", false);
   const [param, setParam] = useProjectsSearchParams();
-  const { isLoading, error, data: list } = useProject(useDebounce(param, 1000));
+  const {
+    isLoading,
+    error,
+    data: list,
+    retry,
+  } = useProject(useDebounce(param, 1000));
   const { data: users } = useUsers();
 
   return (
@@ -36,7 +41,12 @@ export const ProjectListScrens = () => {
       {error ? (
         <Typography.Text type={"danger"}>{error.message}</Typography.Text>
       ) : null}
-      <List loading={isLoading} dataSource={list || []} users={users || []} />
+      <List
+        refresh={retry}
+        loading={isLoading}
+        dataSource={list || []}
+        users={users || []}
+      />
     </Container>
   );
 };

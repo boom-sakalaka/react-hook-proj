@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-08-03 23:26:20
+ * @LastEditTime: 2021-08-07 10:54:58
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\screens\project-list\list.tsx
+ * @FilePath: \react-hook-proj\src\screens\project-list\list.tsx
  */
 import React from "react";
 import { User } from "screens/project-list/search-panel";
@@ -25,11 +25,13 @@ export interface Project {
 
 interface ListProps extends TableProps<Project> {
   users: User[];
+  refresh?: () => void;
 }
 
-export const List = ({ users, ...props }: ListProps) => {
+export const List = ({ users, refresh, ...props }: ListProps) => {
   const { mutate } = useEditProject();
-  const pinPeject = (id: number) => (pin: boolean) => mutate({ id, pin });
+  const pinPeject = (id: number) => (pin: boolean) =>
+    mutate({ id, pin }).then(refresh);
   return (
     <Table
       pagination={false}

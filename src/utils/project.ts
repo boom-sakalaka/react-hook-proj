@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-20 22:23:16
- * @LastEditTime: 2021-08-03 23:21:39
+ * @LastEditTime: 2021-08-07 10:48:53
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\utils\project.ts
+ * @FilePath: \react-hook-proj\src\utils\project.ts
  */
 
 import { useEffect } from "react";
@@ -16,8 +16,11 @@ import { useAsync } from "./use-async";
 export const useProject = (param?: Partial<Project>) => {
   const client = useHttp();
   const { run, ...result } = useAsync<Project[]>();
+  const fetchProject = () => client("projects", { data: cleanObject(param) });
   useEffect(() => {
-    run(client("projects", { data: cleanObject(param) }));
+    run(fetchProject(), {
+      retry: fetchProject,
+    });
     // eslint-disable-next-line
   }, [param]);
 
