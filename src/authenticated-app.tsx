@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-08-07 12:23:58
+ * @LastEditTime: 2021-08-07 14:18:10
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\authenticated-app.tsx
@@ -22,12 +22,17 @@ export const AuthenticatedApp = () => {
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   return (
     <Container>
-      <PageHeader />
+      <PageHeader setProjectModalOpen={setProjectModalOpen} />
       <Main>
         {/* <ProjectListScrens /> */}
         <Router>
           <Routes>
-            <Route path={"/projects"} element={<ProjectListScrens />} />
+            <Route
+              path={"/projects"}
+              element={
+                <ProjectListScrens setProjectModalOpen={setProjectModalOpen} />
+              }
+            />
             <Route
               path={"/projects/:projectId/*"}
               element={<ProjectScreen />}
@@ -46,14 +51,15 @@ export const AuthenticatedApp = () => {
   );
 };
 
-const PageHeader = () => {
+const PageHeader = (props: {
+  setProjectModalOpen: (isOpen: boolean) => void;
+}) => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
         <SoftwareLogo width={"18rem"} color={"rgb(38,132,255)"} />
-        <ProjectPopover />
+        <ProjectPopover setProjectModalOpen={props.setProjectModalOpen} />
       </HeaderLeft>
-
       <HeaderRight>
         <User />
       </HeaderRight>
