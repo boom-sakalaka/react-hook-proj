@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-08-07 18:20:44
+ * @LastEditTime: 2021-08-07 21:54:56
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\authenticated-app.tsx
@@ -10,7 +10,7 @@ import { useAuth } from "context/auth.context";
 import React from "react";
 import { ProjectListScrens } from "screens/project-list/index";
 import styled from "@emotion/styled";
-import { ButtonNoPadding, Row } from "compoments/lib";
+import { Row } from "compoments/lib";
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import { Button, Dropdown, Menu } from "antd";
 import { Navigate, Route, Routes } from "react-router";
@@ -18,7 +18,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ProjectScreen } from "screens/project/index";
 import ProjectModal from "screens/project-list/project-modal";
 import ProjectPopover from "compoments/project-popover";
-import { useProjectModal } from "screens/project-list/util";
+
 export const AuthenticatedApp = () => {
   return (
     <Container>

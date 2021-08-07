@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-08-07 18:22:04
+ * @LastEditTime: 2021-08-07 21:50:10
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\screens\project-list\list.tsx
@@ -27,14 +27,12 @@ export interface Project {
 
 interface ListProps extends TableProps<Project> {
   users: User[];
-  refresh?: () => void;
 }
 
-export const List = ({ users, refresh, ...props }: ListProps) => {
+export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject();
   const { open } = useProjectModal();
-  const pinPeject = (id: number) => (pin: boolean) =>
-    mutate({ id, pin }).then(refresh);
+  const pinPeject = (id: number) => (pin: boolean) => mutate({ id, pin });
   return (
     <Table
       pagination={false}

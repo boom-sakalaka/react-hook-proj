@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-08-07 18:21:55
+ * @LastEditTime: 2021-08-07 21:54:24
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\screens\project-list\index.tsx
@@ -11,13 +11,13 @@ import { List } from "./list";
 import { SearchPanel } from "./search-panel";
 import { useDebounce } from "utils";
 import styled from "@emotion/styled";
-import { Row, Typography } from "antd";
-import { useProject } from "utils/project";
+import { Row } from "antd";
+import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
 // import { Helmet } from "react-helmet";
 import { useDocumentTitle } from "utils";
 import { useProjectModal, useProjectsSearchParams } from "./util";
-import { ButtonNoPadding } from "compoments/lib";
+import { ButtonNoPadding, ErrorBox } from "compoments/lib";
 // import { Test } from "./test";
 
 export const ProjectListScrens = () => {
@@ -28,8 +28,7 @@ export const ProjectListScrens = () => {
     isLoading,
     error,
     data: list,
-    retry,
-  } = useProject(useDebounce(param, 1000));
+  } = useProjects(useDebounce(param, 1000));
   const { data: users } = useUsers();
 
   return (
@@ -46,15 +45,8 @@ export const ProjectListScrens = () => {
       </Row>
 
       <SearchPanel param={param} setParam={setParam} users={users || []} />
-      {error ? (
-        <Typography.Text type={"danger"}>{error.message}</Typography.Text>
-      ) : null}
-      <List
-        refresh={retry}
-        loading={isLoading}
-        dataSource={list || []}
-        users={users || []}
-      />
+      {error ? <ErrorBox error={error} /> : null}
+      <List loading={isLoading} dataSource={list || []} users={users || []} />
     </Container>
   );
 };
