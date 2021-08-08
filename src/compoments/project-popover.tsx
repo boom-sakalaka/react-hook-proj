@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-08-07 12:12:22
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-07 21:49:16
+ * @LastEditTime: 2021-08-08 10:44:25
  * @FilePath: \react-hook-proj\src\compoments\project-popover.tsx
  * @Description:
  */
@@ -23,7 +23,7 @@ export default function ProjectPopover() {
       <Typography.Text type={"secondary"}>收藏项目</Typography.Text>
       <List>
         {pinnedProjects?.map((itme) => (
-          <List.Item>
+          <List.Item key={itme?.id}>
             <List.Item.Meta title={itme.name} />
           </List.Item>
         ))}

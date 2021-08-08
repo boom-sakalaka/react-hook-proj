@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-08-07 12:02:15
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-08 10:08:39
+ * @LastEditTime: 2021-08-08 10:44:15
  * @FilePath: \react-hook-proj\src\screens\project-list\project-modal.tsx
  * @Description:
  */
@@ -39,13 +39,16 @@ export default function ProjectModal() {
   useEffect(() => {
     form.setFieldsValue(editingProject);
   }, [form, editingProject]);
-
+  const closeModal = () => {
+    form.resetFields();
+    close();
+  };
   return (
     <Drawer
       forceRender={true}
       width={"100%"}
       visible={projectModalOpen}
-      onClose={close}
+      onClose={closeModal}
     >
       {isLoading ? (
         <Spin size="large" />
