@@ -2,14 +2,19 @@
  * @Author: GZH
  * @Date: 2021-08-03 22:11:53
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-07 23:31:54
+ * @LastEditTime: 2021-08-08 10:06:47
  * @FilePath: \react-hook-proj\src\screens\project-list\util.ts
  * @Description:
  */
 
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import { useProject } from "utils/project";
 import { useQueryQueryParam, useSetUrlSearchParam } from "utils/url";
+
+export const useProjectsQueryKey = () => {
+  const [params] = useProjectsSearchParams();
+  return ["projects", params];
+};
 
 export const useProjectsSearchParams = () => {
   const [param, setParam] = useQueryQueryParam(["name", "personId"]);

@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-08-07 12:02:15
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-07 23:33:39
+ * @LastEditTime: 2021-08-08 10:08:39
  * @FilePath: \react-hook-proj\src\screens\project-list\project-modal.tsx
  * @Description:
  */
@@ -13,7 +13,7 @@ import { ErrorBox } from "compoments/lib";
 import { UserSelect } from "compoments/user-select";
 import React, { useEffect } from "react";
 import { useAddProject, useEditProject } from "utils/project";
-import { useProjectModal } from "./util";
+import { useProjectModal, useProjectsQueryKey } from "./util";
 
 export default function ProjectModal() {
   const { projectModalOpen, close, editingProject, isLoading } =
@@ -22,7 +22,11 @@ export default function ProjectModal() {
   const title = editingProject ? "编辑项目" : "创建项目";
 
   const useMutateProject = editingProject ? useEditProject : useAddProject;
-  const { mutateAsync, error, isLoading: mutateLoading } = useMutateProject();
+  const {
+    mutateAsync,
+    error,
+    isLoading: mutateLoading,
+  } = useMutateProject(useProjectsQueryKey());
 
   const [form] = useForm();
   const onFinish = (values: any) => {
