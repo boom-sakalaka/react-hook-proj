@@ -1,28 +1,34 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:08:49
- * @LastEditTime: 2021-08-03 22:16:45
+ * @LastEditTime: 2021-08-07 21:54:24
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\screens\project-list\index.tsx
+ * @FilePath: \react-hook-proj\src\screens\project-list\index.tsx
  */
 import React from "react";
 import { List } from "./list";
 import { SearchPanel } from "./search-panel";
 import { useDebounce } from "utils";
 import styled from "@emotion/styled";
-import { Typography } from "antd";
-import { useProject } from "utils/project";
+import { Row } from "antd";
+import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
 // import { Helmet } from "react-helmet";
 import { useDocumentTitle } from "utils";
-import { useProjectsSearchParams } from "./util";
+import { useProjectModal, useProjectsSearchParams } from "./util";
+import { ButtonNoPadding, ErrorBox } from "compoments/lib";
 // import { Test } from "./test";
 
 export const ProjectListScrens = () => {
   useDocumentTitle("项目列表", false);
+  const { open } = useProjectModal();
   const [param, setParam] = useProjectsSearchParams();
-  const { isLoading, error, data: list } = useProject(useDebounce(param, 1000));
+  const {
+    isLoading,
+    error,
+    data: list,
+  } = useProjects(useDebounce(param, 1000));
   const { data: users } = useUsers();
 
   return (
@@ -31,11 +37,15 @@ export const ProjectListScrens = () => {
       {/* <Helmet>
         <title>项目列表</title>
       </Helmet> */}
-      <h1>项目列表</h1>
+      <Row justify="space-between">
+        <h1>项目列表</h1>
+        <ButtonNoPadding type="link" onClick={open}>
+          创建项目
+        </ButtonNoPadding>
+      </Row>
+
       <SearchPanel param={param} setParam={setParam} users={users || []} />
-      {error ? (
-        <Typography.Text type={"danger"}>{error.message}</Typography.Text>
-      ) : null}
+      {error ? <ErrorBox error={error} /> : null}
       <List loading={isLoading} dataSource={list || []} users={users || []} />
     </Container>
   );

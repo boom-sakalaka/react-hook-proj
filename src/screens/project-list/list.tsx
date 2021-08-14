@@ -1,18 +1,20 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 21:10:05
- * @LastEditTime: 2021-08-03 23:26:20
+ * @LastEditTime: 2021-08-08 10:21:40
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\screens\project-list\list.tsx
+ * @FilePath: \react-hook-proj\src\screens\project-list\list.tsx
  */
 import React from "react";
 import { User } from "screens/project-list/search-panel";
-import { Table, TableProps } from "antd";
+import { Dropdown, Menu, Modal, Table, TableProps } from "antd";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import Pin from "compoments/pin";
-import { useEditProject } from "utils/project";
+import { useDeleteProject, useEditProject } from "utils/project";
+import { ButtonNoPadding } from "compoments/lib";
+import { useProjectModal, useProjectsQueryKey } from "./util";
 
 export interface Project {
   id: number;
@@ -28,7 +30,7 @@ interface ListProps extends TableProps<Project> {
 }
 
 export const List = ({ users, ...props }: ListProps) => {
-  const { mutate } = useEditProject();
+  const { mutate } = useEditProject(useProjectsQueryKey());
   const pinPeject = (id: number) => (pin: boolean) => mutate({ id, pin });
   return (
     <Table
@@ -79,9 +81,48 @@ export const List = ({ users, ...props }: ListProps) => {
             );
           },
         },
+        {
+          render(value, project) {
+            return <More project={project} />;
+          },
+        },
       ]}
       {...props}
       rowKey="id"
     />
+  );
+};
+const More = ({ project }: { project: Project }) => {
+  const { startEdit } = useProjectModal();
+  const editProject = (id: number) => () => startEdit(id);
+  const { mutate: deleteProject } = useDeleteProject(useProjectsQueryKey());
+  const confirmDeleteProject = (id: number) => {
+    Modal.confirm({
+      title: "确定删除这个项目吗?",
+      content: "点击确定删除",
+      okText: "确定",
+      onOk() {
+        deleteProject({ id });
+      },
+    });
+  };
+  return (
+    <Dropdown
+      overlay={
+        <Menu>
+          <Menu.Item onClick={editProject(project.id)} key={"edit"}>
+            编辑
+          </Menu.Item>
+          <Menu.Item
+            onClick={() => confirmDeleteProject(project.id)}
+            key={"delete"}
+          >
+            删除
+          </Menu.Item>
+        </Menu>
+      }
+    >
+      <ButtonNoPadding type={"link"}>...</ButtonNoPadding>
+    </Dropdown>
   );
 };

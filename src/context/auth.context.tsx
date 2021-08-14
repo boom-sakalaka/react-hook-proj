@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-15 15:45:29
- * @LastEditTime: 2021-05-21 22:31:04
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-08-08 10:46:56
+ * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\auth.context.tsx
+ * @FilePath: \react-hook-proj\src\context\auth.context.tsx
  */
 import React, { ReactNode } from "react";
 import * as auth from "auth-provider";
@@ -13,6 +13,7 @@ import { http } from "utils/http";
 import { useMount } from "utils";
 import { useAsync } from "utils/use-async";
 import { FullPageErrorFallBack, FullPageLoading } from "compoments/lib";
+import { useQueryClient } from "react-query";
 
 interface AuthForm {
   username: string;
@@ -52,11 +53,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     run,
     setData: setUser,
   } = useAsync<User | null>();
-
+  const queryClient = useQueryClient();
   // point free 消参
   const login = (form: AuthForm) => auth.login(form).then(setUser);
   const register = (from: AuthForm) => auth.register(from).then(setUser);
-  const logout = () => auth.logout().then(() => setUser(null));
+  const logout = () =>
+    auth.logout().then(() => {
+      setUser(null);
+      queryClient.clear();
+    });
 
   useMount(() => {
     run(bootstrapUser());

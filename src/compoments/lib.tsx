@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 21:57:11
- * @LastEditTime: 2021-05-21 22:33:02
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-08-07 21:53:50
+ * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\components\lib.tsx
+ * @FilePath: \react-hook-proj\src\compoments\lib.tsx
  */
 import React from "react";
 import styled from "@emotion/styled";
-import { Spin, Typography } from "antd";
+import { Button, Spin } from "antd";
 import { DevTools } from "jira-dev-tool";
 
 export const Row = styled.div<{
@@ -49,6 +49,20 @@ export const FullPageLoading = () => (
 export const FullPageErrorFallBack = ({ error }: { error: Error | null }) => (
   <FullPage>
     <DevTools />
-    <Typography.Text type="danger">{error?.message}</Typography.Text>
+    <ErrorBox error={error} />
   </FullPage>
 );
+
+export const ButtonNoPadding = styled(Button)`
+  padding: 0;
+`;
+
+// 类型守卫
+const isError = (value: any): value is Error => value?.message;
+
+export const ErrorBox = ({ error }: { error: unknown }) => {
+  if (isError(error)) {
+    return <ErrorBox error={error} />;
+  }
+  return null;
+};

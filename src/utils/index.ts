@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-13 22:40:03
- * @LastEditTime: 2021-07-06 07:42:02
+ * @LastEditTime: 2021-08-07 11:19:32
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\utils\index.ts
+ * @FilePath: \react-hook-proj\src\utils\index.ts
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -93,4 +93,17 @@ export const useDocumentTitle = (
       }
     };
   }, [keepOnUnMount, oldTitle]);
+};
+
+// 返回组件的卸载状态
+export const useMountedRef = () => {
+  const mountedRef = useRef(false);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+  return mountedRef;
 };

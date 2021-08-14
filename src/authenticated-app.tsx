@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-08-01 19:45:06
+ * @LastEditTime: 2021-08-07 21:54:56
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\authenticated-app.tsx
+ * @FilePath: \react-hook-proj\src\authenticated-app.tsx
  */
 import { useAuth } from "context/auth.context";
 import React from "react";
@@ -16,13 +16,17 @@ import { Button, Dropdown, Menu } from "antd";
 import { Navigate, Route, Routes } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ProjectScreen } from "screens/project/index";
+import ProjectModal from "screens/project-list/project-modal";
+import ProjectPopover from "compoments/project-popover";
+
 export const AuthenticatedApp = () => {
   return (
     <Container>
-      <PageHeader />
-      <Main>
-        {/* <ProjectListScrens /> */}
-        <Router>
+      <Router>
+        <PageHeader />
+        <Main>
+          {/* <ProjectListScrens /> */}
+
           <Routes>
             <Route path={"/projects"} element={<ProjectListScrens />} />
             <Route
@@ -31,39 +35,45 @@ export const AuthenticatedApp = () => {
             />
             <Navigate to={"/projects"} />
           </Routes>
-        </Router>
-      </Main>
+        </Main>
+        <ProjectModal />
+      </Router>
     </Container>
   );
 };
 
 const PageHeader = () => {
-  const { logout, user } = useAuth();
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
         <SoftwareLogo width={"18rem"} color={"rgb(38,132,255)"} />
-        <h3>项目</h3>
-        <h3>用户</h3>
+        <ProjectPopover />
       </HeaderLeft>
       <HeaderRight>
-        <Dropdown
-          overlay={
-            <Menu>
-              <Menu.Item key={"logout"}>
-                <Button type="link" onClick={logout}>
-                  登出
-                </Button>
-              </Menu.Item>
-            </Menu>
-          }
-        >
-          <Button type="link" onClick={(e) => e.preventDefault()}>
-            Hi,{user?.name}
-          </Button>
-        </Dropdown>
+        <User />
       </HeaderRight>
     </Header>
+  );
+};
+
+const User = () => {
+  const { logout, user } = useAuth();
+  return (
+    <Dropdown
+      overlay={
+        <Menu>
+          <Menu.Item key={"logout"}>
+            <Button type="link" onClick={logout}>
+              登出
+            </Button>
+          </Menu.Item>
+        </Menu>
+      }
+    >
+      <Button type="link" onClick={(e) => e.preventDefault()}>
+        Hi,{user?.name}
+      </Button>
+    </Dropdown>
   );
 };
 

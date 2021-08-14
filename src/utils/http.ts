@@ -1,14 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 20:36:14
- * @LastEditTime: 2021-05-16 21:49:23
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-08-07 11:28:41
+ * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\utils\http.ts
+ * @FilePath: \react-hook-proj\src\utils\http.ts
  */
 import qs from "qs";
 import * as auth from "auth-provider";
 import { useAuth } from "context/auth.context";
+import { useCallback } from "react";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 interface Config extends RequestInit {
@@ -52,6 +53,9 @@ export const http = async (
 
 export const useHttp = () => {
   const { user } = useAuth();
-  return (...[endpoint, config]: Parameters<typeof http>) =>
-    http(endpoint, { ...config, token: user?.token });
+  return useCallback(
+    (...[endpoint, config]: Parameters<typeof http>) =>
+      http(endpoint, { ...config, token: user?.token }),
+    [user?.token]
+  );
 };

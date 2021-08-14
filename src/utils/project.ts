@@ -1,62 +1,71 @@
 /*
  * @Author: your name
  * @Date: 2021-05-20 22:23:16
- * @LastEditTime: 2021-08-03 23:21:39
+ * @LastEditTime: 2021-08-08 10:13:46
  * @LastEditors: GZH
  * @Description: In User Settings Edit
- * @FilePath: \jira\src\utils\project.ts
+ * @FilePath: \react-hook-proj\src\utils\project.ts
  */
 
-import { useEffect } from "react";
+import { QueryKey, useMutation, useQuery } from "react-query";
 import { Project } from "screens/project-list/list";
-import { cleanObject } from "utils";
 import { useHttp } from "./http";
-import { useAsync } from "./use-async";
+import {
+  useAddConfig,
+  useDeleteConfig,
+  useEditConfig,
+} from "./use-optimistic-options";
 
-export const useProject = (param?: Partial<Project>) => {
+export const useProjects = (param?: Partial<Project>) => {
   const client = useHttp();
-  const { run, ...result } = useAsync<Project[]>();
-  useEffect(() => {
-    run(client("projects", { data: cleanObject(param) }));
-    // eslint-disable-next-line
-  }, [param]);
 
-  return result;
+  return useQuery<Project[]>(["projects", param], () =>
+    client("projects", { data: param })
+  );
 };
 
-export const useEditProject = () => {
-  const { run, ...asyncResult } = useAsync();
+export const useEditProject = (queryKey: QueryKey) => {
   const client = useHttp();
-
-  const mutate = (param: Partial<Project>) => {
-    return run(
-      client(`projects/${param.id}`, {
-        data: param,
+  return useMutation(
+    (params: Partial<Project>) =>
+      client(`projects/${params.id}`, {
         method: "PATCH",
-      })
-    );
-  };
-
-  return {
-    mutate,
-    ...asyncResult,
-  };
+        data: params,
+      }),
+    useEditConfig(queryKey)
+  );
 };
-export const useAddProject = () => {
-  const { run, ...asyncResult } = useAsync();
+export const useAddProject = (queryKey: QueryKey) => {
+  const client = useHttp();
+  return useMutation(
+    (params: Partial<Project>) =>
+      client(`projects`, {
+        method: "Post",
+        data: params,
+      }),
+    useAddConfig(queryKey)
+  );
+};
+
+export const useDeleteProject = (queryKey: QueryKey) => {
   const client = useHttp();
 
-  const mutate = (param: Partial<Project>) => {
-    return run(
-      client(`projects/${param.id}`, {
-        data: param,
-        method: "POST",
-      })
-    );
-  };
+  return useMutation(
+    ({ id }: { id: number }) =>
+      client(`projects/${id}`, {
+        method: "DELETE",
+      }),
+    useDeleteConfig(queryKey)
+  );
+};
 
-  return {
-    mutate,
-    ...asyncResult,
-  };
+export const useProject = (id?: number) => {
+  const client = useHttp();
+  return useQuery<Project>(
+    ["project", { id }],
+    () => client(`projects/${id}`),
+    {
+      enabled: Boolean(id),
+    }
+  );
 };
