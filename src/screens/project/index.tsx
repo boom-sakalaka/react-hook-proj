@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-27 21:48:39
- * @LastEditTime: 2021-08-02 21:06:58
+ * @LastEditTime: 2021-08-12 21:35:23
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \jira\src\screens\project\index.tsx
@@ -21,7 +21,7 @@ export const ProjectScreen = () => {
       <Routes>
         <Route path={"/kanban"} element={<KanbanScreen />} />
         <Route path={"/epic"} element={<EpicScreen />} />
-        <Navigate to={window.location.pathname + "/kanban"} />
+        <Navigate to={window.location.pathname + "/kanban"} replace={true} />
       </Routes>
     </div>
   );
