@@ -2,8 +2,8 @@
  * @Author: GZH
  * @Date: 2021-08-02 21:01:57
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-15 21:36:15
- * @FilePath: \jira\src\screens\kanban\index.tsx
+ * @LastEditTime: 2021-08-21 10:39:57
+ * @FilePath: \react-hook-proj\src\screens\kanban\index.tsx
  * @Description:
  */
 
@@ -13,6 +13,7 @@ import { useKanbans } from "utils/kanban";
 import { useProjectInUrl, useTasksSearchParams } from "screens/kanban/util";
 import { KanbanColumn } from "./kanban-column";
 import styled from "@emotion/styled";
+import { SearchPanel } from "./search-panel";
 
 export default function KanbanScreen() {
   useDocumentTitle("看板列表");
@@ -22,6 +23,7 @@ export default function KanbanScreen() {
   return (
     <div>
       <h1>{currentProject?.name}看板</h1>
+      <SearchPanel />
       <ColumnsContainer>
         {kanbans?.map((kanban) => (
           <KanbanColumn key={kanban.id} kanban={kanban} />
