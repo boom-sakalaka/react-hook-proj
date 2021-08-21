@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 19:58:40
- * @LastEditTime: 2021-08-21 11:29:54
+ * @LastEditTime: 2021-08-21 12:07:34
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\authenticated-app.tsx
@@ -93,5 +93,5 @@ const HeaderRight = styled.div``;
 
 const Main = styled.main`
   display: flex;
-  overflow: hidden;
+  overflow: scroll;
 `;

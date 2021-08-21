@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-08-21 10:00:57
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-21 11:21:50
+ * @LastEditTime: 2021-08-21 12:05:02
  * @FilePath: \react-hook-proj\src\screens\project\index.tsx
  * @Description:
  */
@@ -54,11 +54,12 @@ const Aside = styled.aside`
 const Main = styled.div`
   box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.1);
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: 16rem 1fr;
   width: 100%;
+  /* overflow: scroll; */
 `;
