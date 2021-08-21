@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-08-02 21:01:57
  * @LastEditors: GZH
- * @LastEditTime: 2021-08-21 10:39:57
+ * @LastEditTime: 2021-08-21 11:27:23
  * @FilePath: \react-hook-proj\src\screens\kanban\index.tsx
  * @Description:
  */
@@ -15,13 +15,13 @@ import { KanbanColumn } from "./kanban-column";
 import styled from "@emotion/styled";
 import { SearchPanel } from "./search-panel";
 
-export default function KanbanScreen() {
+export function KanbanScreen() {
   useDocumentTitle("看板列表");
 
   const { data: currentProject } = useProjectInUrl();
   const { data: kanbans } = useKanbans(useTasksSearchParams());
   return (
-    <div>
+    <div style={{ paddingLeft: "30px" }}>
       <h1>{currentProject?.name}看板</h1>
       <SearchPanel />
       <ColumnsContainer>

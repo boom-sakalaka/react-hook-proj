@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 21:57:11
- * @LastEditTime: 2021-08-07 21:53:50
+ * @LastEditTime: 2021-08-21 11:18:53
  * @LastEditors: GZH
  * @Description: In User Settings Edit
  * @FilePath: \react-hook-proj\src\compoments\lib.tsx
@@ -66,3 +66,10 @@ export const ErrorBox = ({ error }: { error: unknown }) => {
   }
   return null;
 };
+
+export const ScreenContainer = styled.div`
+  padding: 3.2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
